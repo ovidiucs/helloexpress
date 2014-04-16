@@ -15,6 +15,16 @@ app.get('/', function(req,res) {
 	res.send("Hello, Express!");
 
 	});
+
+app.get('/hi', function(req,res) {
+// send more than text
+	var message = [
+			'<ul><li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>',
+			'<li>Aliquam tincidunt mauris eu risus.</li>',
+			'<li>Vestibulum auctor dapibusneque.</li></ul>'].join("\n");
+	res.send(message);
+
+	});
 // post
 // create data
 
