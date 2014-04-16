@@ -6,8 +6,8 @@ var express = require('express')
 	,http		= require('http');
 
 var app = express();
-
-// all environments
+// parse body of req
+app.use(express.bodyParser());
 app.set('port', process.env.PORT || 3000);
 // get
 // reads data
@@ -33,6 +33,9 @@ app.get('/users/:userId', function(req,res) {
 
 // post
 // create data
+app.post("/users", function(req,res) {
+	res.send("Creating a new user with the name " + req.body.username + ".");
+});
 
 // delete
 // delete data
