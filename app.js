@@ -10,7 +10,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 
 app.get("/", function (req,res) {
-   res.render("home.jade",{ title:"Building Web Apps in node"});
+   res.render("home.jade",{ title:"Having Fun with Express"});
 });
 
 
