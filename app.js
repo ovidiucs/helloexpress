@@ -25,6 +25,12 @@ app.get('/hi', function(req,res) {
 	res.send(message);
 
 	});
+
+app.get('/users/:userId', function(req,res) {
+	res.send("<h2>Hello, User #" + req.params.userId + "!");
+	
+	});
+
 // post
 // create data
 
