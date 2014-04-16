@@ -26,10 +26,11 @@ app.get('/hi', function(req,res) {
 
 	});
 
-app.get('/users/:userId', function(req,res) {
-	res.send("<h2>Hello, User #" + req.params.userId + "!");
-	
-	});
+//app.get('/users/:userId', function(req,res) {
+//	res.send("<h2>Hello, User #" + req.params.userId + "!");
+//	
+//	});
+
 
 // post
 // create data
@@ -40,10 +41,23 @@ app.post("/users", function(req,res) {
 // delete
 // delete data
 
-// put
-// update data
+// put /users/:userId
+// update data /users/:userId
 
+// complex routes
+app.get(/\/users\/(\d*)\/?(edit)?/, function(req, res) {
+// /users/10
+// /users/10/
+// /users/10/edit
 
+var message = "user #" + req.params[0] + "'s profile";
+	if (req.params[1] === 'edit') {
+		message = "Editing " + message;
+	} else {
+		message = "Viewing " + message;
+	}
+	res.send(message);
+});
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
