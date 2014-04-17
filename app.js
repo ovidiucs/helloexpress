@@ -21,6 +21,12 @@ app.get("/", function (req,res) {
    res.render("home",{ title:"Having Fun with Express"});
 });
 
+var newlist = ['apple','orange','beer','banana','strawberry','bread'];
+app.get("/users/:from-:to", function (req, res) {
+   var from = parseInt(req.params.from, 10),
+       to   = parseInt(req.params.to, 10);
+       res.json(newlist.slice(from, to + 1));
+}); 
 
 http.createServer(app).listen(app.get("port"), function(){
   console.log("Express server listening on port " + app.get("port"));
