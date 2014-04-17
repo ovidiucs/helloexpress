@@ -37,6 +37,18 @@ app.get("/users/:from-:to", function (req, res) {
        res.json(newlist.slice(req.from, req.to + 1));
 }); 
 
+var count  = 0;
+
+app.get('/hello.txt', function (req, res, next) {
+   count+=1;
+   // go to next middleware
+   next();
+});
+
+app.get('/count', function (req, res) {
+   res.send(" ", + count + " views");
+});
+ 
 http.createServer(app).listen(app.get("port"), function(){
   console.log("Express server listening on port " + app.get("port"));
 });
