@@ -22,10 +22,19 @@ app.get("/", function (req,res) {
 });
 
 var newlist = ['apple','orange','beer','banana','strawberry','bread'];
+
+app.param('from', function (req, res, next, from) {
+   req.from = parseInt(from, 10)
+   next();
+});
+
+app.param('to', function (req, res, next, to) {
+   req.to = parseInt(to, 10)
+   next();
+});
+
 app.get("/users/:from-:to", function (req, res) {
-   var from = parseInt(req.params.from, 10),
-       to   = parseInt(req.params.to, 10);
-       res.json(newlist.slice(from, to + 1));
+       res.json(newlist.slice(req.from, req.to + 1));
 }); 
 
 http.createServer(app).listen(app.get("port"), function(){
