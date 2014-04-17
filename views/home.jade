@@ -1,17 +1,35 @@
 extends layout
 
+
 block head
-	title My Awsome Page
-	style(type='text/css').
-		p { background:blue }
+   title My Awsome Page
+   style(type='text/css').
+      p { background:blue }
 
 
 block content
-	h1 My Awsome Page
-	p
-		| Some really awsome copy
-	ul
-		li One
-		li Two
-		li Three
-	
+    - var name ="varname"
+    - var user = {description: "foo bar baz"}
+    #user
+        if user.description
+            h2 Description
+            p.description=user.description
+        else
+            h1 Description
+            p.description User has no description
+
+    h1 My Awsome Page
+    p
+       | Some really awsome copy
+    ul
+       li One
+       li Two
+       li Three
+    ul
+       li #{name}
+       li
+       li
+    ul
+       li
+       li
+       li
