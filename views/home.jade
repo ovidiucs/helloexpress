@@ -4,7 +4,7 @@ extends layout
 block head
    title My Awsome Page
    style(type='text/css').
-      p { background:blue }
+      p { background:gray }
 
 
 block content
@@ -17,19 +17,35 @@ block content
         else
             h1 Description
             p.description User has no description
-
+    
     h1 My Awsome Page
     p
-       | Some really awsome copy
-    ul
-       li One
-       li Two
-       li Three
-    ul
-       li #{name}
-       li
-       li
-    ul
-       li
-       li
-       li
+        | Some really awsome copy
+    // Reuse Block of code using mixin
+    mixin list
+        ul
+           li One
+           li Two
+           li Three
+        ul
+           li #{name}
+    +list()
+    +list()
+    
+    mixin article(title)
+        .article
+            .article-wrapper
+                h1=title
+                if block
+                    block
+                else
+                    p No content provided
+    +article("Hello World")
+    +article("Hello World")
+        p This is my
+        p Amazing article
+
+    - var userlist = [ {name:"user1", email :"email@email.com"},{name:"user2", email :"enail2@email.com"} ];
+      ul
+          each userObject, i in userlist
+            include user 
