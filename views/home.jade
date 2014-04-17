@@ -1,5 +1,17 @@
 extends layout
 
-block content
-   h2=title
+block head
+	title My Awsome Page
+	style(type='text/css').
+		p { background:blue }
 
+
+block content
+	h1 My Awsome Page
+	p
+		| Some really awsome copy
+	ul
+		li One
+		li Two
+		li Three
+	
